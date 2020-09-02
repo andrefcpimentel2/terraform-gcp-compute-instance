@@ -7,7 +7,6 @@ data "google_compute_zones" "available" {
 }
 
 resource "google_compute_instance" "server" {
-  count                   = var.servers
   zone                    = data.google_compute_zones.available.names[count.index]
   name                    = "${var.cust_name}-compute-instance"
   machine_type            = var.instance_type
